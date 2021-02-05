@@ -48,3 +48,41 @@ const logNumber: (i: number) => void = (i: number) => {
 // When to use annotations
 // 1) Function that returns the 'any' type
 const json = '{"x", "y": 20}';
+const coordinates: { x: number; y: number } = JSON.parse(json);
+
+console.log(coordinates); // {x: 10, y:20}
+// Typescript has no idea what JSON.parse will return
+// coordinates is an 'any' type
+// Avoid variables with 'any' at all costs
+// so let's willingly add type annotations here then
+
+// 2) When we declare a variable on one line
+// then initialize it later
+let words = ["red", "green", "blue"];
+
+let foundWord: boolean; // because it's not declared; foundWord could be anything
+// if the word never gets found it's undefined
+// if it is found, then it's a boolean
+// that's why we explicitly state the foundWord
+// let foundWord = false; // technically this is way better
+
+for (let i = 0; i < words.length; i++) {
+  if (words[i] === "green") {
+    foundWord = true;
+  }
+}
+
+// corner case according to Grider
+// 3) When we want a variable to have a type that can't be inferred
+let numbers = [-10, -1, 12];
+
+// numberAboveZero can be a boolean or a number; this is justified
+// could see this happening in a lot of algorithm style questions
+let numberAboveZero: boolean | number = false;
+
+// if you find a positive number, return the number; otherwise return false;
+for (let i = 0; i < numbers.length; i++) {
+  if (numbers[i] > 0) {
+    numberAboveZero = numbers[i];
+  }
+}
