@@ -25,8 +25,10 @@ const tea: Drink = ["brown", false, 0];
 
 // why you won't use tuples too often
 
+// what is dis???
 const carSpecs: [number, number] = [499, 3354];
 
+// ohh I get it
 const carStats = {
   horsepower: 400,
   weight: 3354,
